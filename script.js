@@ -310,3 +310,39 @@ function updateStats(itemsObj) {
 
     document.getElementById('selected-count').textContent = selectedCount;
 }
+
+// =============================================
+// BANK MODAL
+// =============================================
+
+window.openBankModal = (src) => {
+
+    const modal = document.getElementById('bankModal');
+    const img = document.getElementById('bankModalImg');
+
+    img.src = src;
+
+    modal.classList.add('show');
+
+    document.body.style.overflow = 'hidden';
+};
+
+window.closeBankModal = () => {
+
+    document.getElementById('bankModal')
+        .classList.remove('show');
+
+    document.body.style.overflow = '';
+};
+
+// click nền để thoát
+document.addEventListener('click', (e) => {
+
+    const modal = document.getElementById('bankModal');
+
+    if (
+        e.target === modal
+    ) {
+        closeBankModal();
+    }
+});

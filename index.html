@@ -61,18 +61,36 @@
             </div>
 
         </section>
-        <!-- Bank Account Box -->
-<section class="bank-box">
 
-    <img 
-        src="bank.jpg"
-        alt="bank"
-        class="bank-avatar"
-    >
-
-</section>
     </main>
 
     <script src="script.js"></script>
+    <!-- BANK IMAGE MODAL -->
+<div class="bank-box">
+
+    <img
+        src="bank.jpg"
+        class="bank-avatar"
+        onclick="openBankModal(this.src)"
+    >
+
+
+
+</div>
+
+<!-- MODAL -->
+
+<div class="bank-modal" id="bankModal">
+
+    <button
+        class="bank-modal-close"
+        onclick="closeBankModal()"
+    >
+        ✕
+    </button>
+
+    <img id="bankModalImg">
+
+</div>
 </body>
 </html>
