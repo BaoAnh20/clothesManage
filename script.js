@@ -153,7 +153,7 @@ function renderItems(itemsObj) {
                 <label class="status-row">
                     <input type="checkbox" ${item.isBought ? 'checked' : ''}
                            onchange="toggleBought('${key}', ${item.isBought})">
-                    <span>${item.isBought ? 'Đã mua ✓' : 'Đang chọn'}</span>
+                    <span>${item.isBought ? 'Mua ✓' : 'Đang chọn'}</span>
                 </label>
             </div>
             <div class="comment-section">
@@ -172,6 +172,7 @@ function renderItems(itemsObj) {
     });
 
     if (totalPriceEl) totalPriceEl.innerText = total.toLocaleString() + ' ₫';
+    updateStats(itemsObj);
 }
 
 // 7. Các hàm Firebase
@@ -254,6 +255,7 @@ window.cancelEdit = (key, index, btn, oldText) => {
     li.querySelector('.comment-actions').style.display = '';
     const wrap = li.querySelector('.comment-edit-wrap');
     if (wrap) wrap.remove();
+
 };
 
 // 8. Thông báo hệ thống
@@ -284,3 +286,27 @@ window.onload = () => {
         }
     });
 };
+
+
+
+//thong ke
+function updateStats(itemsObj) {
+
+    if (!itemsObj) {
+        document.getElementById('total-count').textContent = 0;
+        document.getElementById('selected-count').textContent = 0;
+        return;
+    }
+
+    const items = Object.values(itemsObj);
+
+    const totalCount = items.length;
+
+    const selectedCount = items.filter(
+        item => item.isBought
+    ).length;
+
+    document.getElementById('total-count').textContent = totalCount;
+
+    document.getElementById('selected-count').textContent = selectedCount;
+}
