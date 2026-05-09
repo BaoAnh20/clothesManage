@@ -1,50 +1,65 @@
-
-
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<!-- Icon cho iPhone/iPad -->
-<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3468/3468377.png">
-
-<title>Bem Clothes Manager</title>
-<!-- Liên kết đến file manifest -->
-<link rel="manifest" href="manifest.json">
-
-<!-- Tối ưu cho iOS (iPhone) -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Bem Clothes Manager">
-<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
-
-<!-- Tối ưu cho Android -->
-<meta name="theme-color" content="#4a4ae1">
-
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+    <link rel="manifest" href="manifest.json">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý sản phẩm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Bem Clothes">
+    <meta name="theme-color" content="#4338ca">
+    <title>Bem Clothes Manager</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 </head>
 <body>
+
+    <!-- Toast thông báo -->
+    <div id="toast" class="toast">✅ Đã lưu thành công!</div>
+
     <nav class="navbar">
-        <a href="index.html" class="active">Quản lý sản phẩm</a>
-        <a href="product.html">Danh sách sản phẩm</a>
+        <a href="index.html" class="active">Quản lý</a>
+        <a href="product.html">Danh sách</a>
     </nav>
+
+    <header class="page-header">
+        <p class="header-sub">Bem Clothes Manager</p>
+        <h1 class="header-title">Thêm sản phẩm</h1>
+    </header>
 
     <main class="container">
         <section class="add-card">
-            <h3>✨ Thêm Sản Phẩm Mới</h3>
+
             <div class="form-group">
-                <input type="text" id="item-name" placeholder="Tên món đồ...">
-                <input type="number" id="item-price" placeholder="Giá tiền (VNĐ)...">
-                <div class="file-input-wrapper">
-                    <button class="btn-file">📸 Chọn ảnh</button>
-                    <input type="file" id="item-image" accept="image/*">
+                <label class="form-label">Tên món đồ</label>
+                <input type="text" id="item-name" placeholder="VD: Áo sơ mi trắng...">
+
+                <label class="form-label">Giá tiền</label>
+                <div class="price-input-wrap">
+                    <input type="number" id="item-price" placeholder="0">
+                    <span class="currency">₫</span>
                 </div>
-                <button id="btn-add" class="btn-main">Lưu vào hệ thống</button>
+
+                <label class="form-label">Ảnh sản phẩm</label>
+                <label class="file-input-label" id="file-label">
+                    <span id="file-text">📸 Nhấn để chọn ảnh</span>
+                    <input type="file" id="item-image" accept="image/*">
+                </label>
+
+                <!-- Preview ảnh -->
+                <div id="img-preview-wrap" style="display:none">
+                    <img id="img-preview" src="" alt="preview">
+                    <button id="img-clear" onclick="clearImage()">✕</button>
+                </div>
+
+                <button id="btn-add" class="btn-main">
+                    <span id="btn-text">Lưu vào hệ thống</span>
+                    <span id="btn-loader" style="display:none">⏳ Đang lưu...</span>
+                </button>
             </div>
+
         </section>
     </main>
 

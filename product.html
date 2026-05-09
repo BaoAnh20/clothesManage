@@ -2,25 +2,32 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách sản phẩm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LAClothes - Danh sách</title>
+    
+    <!-- Link Manifest đã tạo -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#4a4ae1">
+
     <link rel="stylesheet" href="style.css">
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.html">Quản lý sản phẩm</a>
-        <a href="products.html" class="active">Danh sách sản phẩm</a>
+        <a href="index.html">Quản lý</a>
+        <a href="products.html" class="active">Danh sách</a>
     </nav>
 
     <header class="list-header">
-        <p>Tổng ngân sách dự kiến: <span id="total-price">0 ₫</span></p>
+        <p>Tổng ngân sách dự kiến</p>
+        <h2 id="total-price">0 ₫</h2>
     </header>
 
     <main class="container">
-        <!-- Danh sách sẽ hiển thị hàng ngang ở đây -->
-        <div id="product-list" class="product-horizontal-list"></div>
+        <!-- Sử dụng Grid 2 cột cho Mobile -->
+        <div id="product-list" class="product-grid"></div>
     </main>
 
     <script src="script.js"></script>
