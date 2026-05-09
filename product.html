@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Quản lý sản phẩm</a>
+        <a href="products.html" class="active">Danh sách sản phẩm</a>
+    </nav>
+
+    <header class="list-header">
+        <p>Tổng ngân sách dự kiến: <span id="total-price">0 ₫</span></p>
+    </header>
+
+    <main class="container">
+        <!-- Danh sách sẽ hiển thị hàng ngang ở đây -->
+        <div id="product-list" class="product-horizontal-list"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

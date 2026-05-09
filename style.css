@@ -1,0 +1,270 @@
+:root {
+    --primary: #4f46e5;
+    --success: #10b981;
+    --danger: #ef4444;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body { 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    color: var(--text-main);
+    margin: 0; 
+    padding-bottom: 40px; 
+    line-height: 1.5;
+}
+
+.container { width: 95%; max-width: 600px; margin: auto; }
+
+header {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    margin-bottom: 20px;
+}
+
+header p { margin: 0; opacity: 0.9; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+header h1 { margin: 5px 0 0; font-size: 2rem; font-weight: 800; }
+
+.add-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+.add-card h3 { margin-top: 0; font-size: 1.1rem; color: #475569; }
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus { border-color: var(--primary); }
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.btn-file {
+    width: 100%;
+    padding: 12px;
+    background: #f1f5f9;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 10px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+#item-image {
+    position: absolute;
+    left: 0; top: 0; opacity: 0;
+    width: 100%; height: 100%;
+    cursor: pointer;
+}
+
+.btn-main {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+}
+
+/* Card sản phẩm */
+/* Container chứa danh sách sản phẩm */
+.product-grid {
+    display: grid;
+    /* Tự động chia 2 cột đều nhau trên mobile */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+    padding: 12px;
+}
+
+/* Card sản phẩm tối ưu cho Mobile */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    border: 1px solid #f0f0f0;
+}
+
+/* Quan trọng: Để ảnh luôn vuông và vừa vặn */
+.card img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Ép ảnh thành hình vuông */
+    object-fit: cover;   /* Ảnh sẽ lấp đầy khung mà không bị méo */
+    display: block;
+    background-color: #f8f8f8;
+}
+
+/* Nội dung bên dưới ảnh */
+.card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card h3 {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+    /* Giới hạn tên chỉ 1 dòng để tránh lệch hàng */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.price {
+    color: #ee4d2d;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+/* Nút xóa nhỏ gọn ở góc */
+.btn-delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255,255,255,0.8);
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    gap: 8px;
+    padding: 10px 0;
+    border-top: 1px solid #f1f5f9;
+}
+
+.status-row input[type="checkbox"] {
+    width: 20px; height: 20px;
+    accent-color: var(--success);
+}
+
+.bought { border: 2px solid var(--success); }
+.bought img { filter: grayscale(0.5); opacity: 0.7; }
+
+/* Comment section */
+.comments-section {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.comments-list {
+    list-style: none; padding: 0; margin: 0 0 10px;
+    max-height: 100px; overflow-y: auto;
+}
+
+.comments-list li {
+    background: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    border: 1px solid #edf2f7;
+}
+
+.comment-input-group { display: flex; gap: 8px; }
+.comment-input-group input {
+    flex: 1; padding: 8px;
+    border-radius: 8px; border: 1px solid #e2e8f0;
+}
+.comment-input-group button {
+    background: var(--primary); color: white;
+    border: none; border-radius: 8px; padding: 0 12px;
+}
+
+/* Thanh Navigation dùng chung */
+.navbar {
+    display: flex;
+    background: #4a4ae1;
+    padding: 15px;
+    justify-content: center;
+    gap: 20px;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.7;
+}
+.navbar a.active {
+    opacity: 1;
+    border-bottom: 2px solid white;
+}
+
+/* Hiển thị hàng ngang */
+.product-horizontal-list {
+    display: flex;
+    flex-wrap: nowrap; /* Không xuống dòng */
+    overflow-x: auto;  /* Cho phép cuộn ngang nếu quá nhiều đồ */
+    gap: 15px;
+    padding: 20px 10px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.product-horizontal-list .card {
+    flex: 0 0 250px; /* Cố định độ rộng mỗi card là 250px */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+}/* Container chứa ảnh để cố định khung hình vuông */
+.card-img-container {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Giữ khung hình vuông cho lưới đều nhau */
+    background-color: #f8f8f8; /* Màu nền nhẹ để lấp chỗ trống nếu ảnh không vuông */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    /* THAY ĐỔI QUAN TRỌNG NHẤT Ở ĐÂY */
+    object-fit: contain; 
+    /* contain giúp hiện nguyên ảnh, không bị mất góc nào */
+    display: block;
+}
