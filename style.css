@@ -1,41 +1,55 @@
-/* =========================================
-   PINTEREST / iOS PREMIUM MOBILE UI
-   ========================================= */
+/* =============================================
+   NATIVE MOBILE APP FEEL
+   iOS + Pinterest + Glassmorphism
+   ============================================= */
 
-:root{
+:root {
 
-    --primary:#8b5cf6;
-    --primary-dark:#6d28d9;
+    --primary: #7c3aed;
+    --primary-light: #a78bfa;
 
-    --bg:#f8f7fc;
+    --success: #22c55e;
+    --danger: #ef4444;
 
-    --card:#ffffffcc;
+    --bg: #f7f4ff;
 
-    --text:#1f1f28;
-    --muted:#8f90a6;
+    --card-bg: rgba(255,255,255,0.74);
 
-    --line:#ece9f6;
+    --text-main: #1f1b2d;
+    --text-muted: #8a86a3;
+
+    --border: rgba(255,255,255,0.62);
+
+    --radius: 30px;
+    --radius-sm: 22px;
 
     --shadow:
-        0 8px 30px rgba(139,92,246,.08),
-        0 2px 10px rgba(0,0,0,.04);
+        0 14px 38px rgba(124,58,237,0.10),
+        0 3px 12px rgba(0,0,0,0.04);
 
-    --radius:28px;
-    --radius-sm:20px;
+    --blur: blur(20px);
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+/* =============================================
+   RESET
+   ============================================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+
+    scroll-behavior: smooth;
 }
 
-body{
+body {
 
     font-family:
         -apple-system,
@@ -45,88 +59,106 @@ body{
         sans-serif;
 
     background:
-        radial-gradient(circle at top left,#f0e9ff 0%,transparent 30%),
-        linear-gradient(to bottom,#fcfbff,#f6f4fc);
+        radial-gradient(circle at top left,
+            #ede9fe 0%,
+            transparent 28%
+        ),
 
-    color:var(--text);
+        radial-gradient(circle at top right,
+            #ddd6fe 0%,
+            transparent 24%
+        ),
 
-    min-height:100vh;
+        linear-gradient(
+            to bottom,
+            #faf8ff,
+            #f5f3ff
+        );
 
-    overflow-x:hidden;
+    color: var(--text-main);
 
-    padding-bottom:120px;
+    min-height: 100vh;
 
-    -webkit-font-smoothing:antialiased;
+    overflow-x: hidden;
+
+    -webkit-text-size-adjust: 100%;
+
+    padding-bottom: 120px;
 }
 
-/* =========================================
-   CONTAINER
-   ========================================= */
+/* =============================================
+   APP CONTAINER
+   ============================================= */
 
-.container{
+.container {
 
-    width:100%;
-    max-width:430px;
+    width: 100%;
 
-    margin:auto;
+    max-width: 430px;
 
-    padding:14px;
+    margin: 0 auto;
+
+    padding: 0 14px;
 }
 
-/* =========================================
+/* =============================================
    FLOATING NAVBAR
-   ========================================= */
+   ============================================= */
 
-.navbar{
+.navbar {
 
-    position:sticky;
-    top:14px;
+    position: sticky;
 
-    z-index:999;
+    top: 10px;
 
-    width:calc(100% - 28px);
-    max-width:430px;
+    z-index: 999;
 
-    margin:14px auto 18px;
+    width: calc(100% - 24px);
 
-    padding:6px;
+    max-width: 430px;
 
-    display:flex;
-    gap:6px;
+    margin: 12px auto 0;
 
-    border-radius:999px;
+    padding: 6px;
 
-    background:rgba(255,255,255,.72);
+    display: flex;
 
-    backdrop-filter:blur(24px);
+    gap: 6px;
 
-    border:1px solid rgba(255,255,255,.7);
+    border-radius: 28px;
 
-    box-shadow:var(--shadow);
+    background: rgba(255,255,255,0.68);
+
+    backdrop-filter: blur(24px);
+
+    border: 1px solid rgba(255,255,255,0.7);
+
+    box-shadow:
+        0 12px 30px rgba(124,58,237,0.10);
 }
 
-.navbar a{
+.navbar a {
 
-    flex:1;
+    flex: 1;
 
-    text-align:center;
+    text-align: center;
 
-    text-decoration:none;
+    text-decoration: none;
 
-    color:#8f8fa4;
+    padding: 14px 12px;
 
-    font-size:13px;
+    border-radius: 22px;
 
-    font-weight:700;
+    font-size: 14px;
 
-    padding:14px 10px;
+    font-weight: 800;
 
-    border-radius:999px;
+    color: #8e8aa6;
 
-    transition:.25s ease;
+    transition: 0.28s ease;
 }
 
-.navbar a.active{
+.navbar a.active {
 
     background:
         linear-gradient(
@@ -135,217 +167,276 @@ body{
             #7c3aed
         );
 
-    color:white;
+    color: white;
 
     box-shadow:
-        0 10px 24px rgba(124,58,237,.25);
+        0 10px 24px rgba(124,58,237,0.28);
 }
 
-/* =========================================
+/* =============================================
    HEADER
-   ========================================= */
+   ============================================= */
 
-.page-header{
+.page-header {
 
-    text-align:center;
+    text-align: center;
 
-    padding:10px 0 22px;
+    padding: 34px 20px 22px;
 }
 
-.header-sub{
+.header-sub {
 
-    font-size:11px;
+    font-size: 11px;
 
-    text-transform:uppercase;
+    letter-spacing: 3px;
 
-    letter-spacing:3px;
+    text-transform: uppercase;
 
-    color:#a2a0b5;
+    color: #a4a0bb;
 
-    margin-bottom:10px;
+    margin-bottom: 8px;
 }
 
-.header-title{
+.header-title {
 
-    font-size:34px;
+    font-size: 34px;
 
-    font-weight:900;
+    font-weight: 900;
 
-    line-height:1.05;
+    letter-spacing: -1.4px;
 
-    letter-spacing:-1.5px;
+    line-height: 1.1;
 
     background:
         linear-gradient(
             135deg,
             #5b21b6,
-            #9f67ff
+            #8b5cf6
         );
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
 }
 
-/* =========================================
+/* =============================================
    GLASS CARD
-   ========================================= */
+   ============================================= */
 
 .add-card,
 .card,
-.bank-box{
+.bank-box,
+.list-header {
 
-    background:rgba(255,255,255,.72);
+    background: rgba(255,255,255,0.72);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter: blur(24px);
 
-    border:1px solid rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,0.7);
 
-    border-radius:var(--radius);
-
-    box-shadow:var(--shadow);
+    box-shadow: var(--shadow);
 }
 
-/* =========================================
-   FORM CARD
-   ========================================= */
+/* =============================================
+   ADD CARD
+   ============================================= */
 
-.add-card{
+.add-card {
 
-    padding:20px;
+    border-radius: 34px;
 
-    margin-bottom:20px;
+    padding: 22px 18px 26px;
+
+    overflow: hidden;
 }
 
-.form-label{
+.form-label {
 
-    display:block;
+    display: block;
 
-    margin:
-        16px 0 8px;
+    margin-top: 18px;
+    margin-bottom: 8px;
 
-    font-size:11px;
+    font-size: 11px;
 
-    font-weight:800;
+    font-weight: 800;
 
-    letter-spacing:1px;
+    letter-spacing: 1px;
 
-    text-transform:uppercase;
+    text-transform: uppercase;
 
-    color:#9b98ac;
+    color: var(--text-muted);
 }
 
-.form-group input,
-.comment-input-row input{
+/* =============================================
+   INPUT
+   ============================================= */
 
-    width:100%;
+.form-group input[type="text"],
+.form-group input[type="number"],
+.comment-input-row input {
 
-    padding:16px 18px;
+    width: 100%;
 
-    border:none;
+    padding: 16px 18px;
 
-    outline:none;
+    border-radius: 22px;
 
-    border-radius:20px;
+    border: 1.5px solid rgba(255,255,255,0.65);
 
-    background:#f7f5fd;
+    background: rgba(255,255,255,0.78);
 
-    color:var(--text);
+    backdrop-filter: blur(10px);
 
-    font-size:15px;
+    font-size: 16px;
 
-    font-weight:600;
+    color: var(--text-main);
 
-    transition:.25s;
+    outline: none;
+
+    transition: 0.25s ease;
+
+    -webkit-appearance: none;
 }
 
 .form-group input:focus,
-.comment-input-row input:focus{
+.comment-input-row input:focus {
 
-    background:white;
+    border-color: #a78bfa;
 
     box-shadow:
-        0 0 0 4px rgba(139,92,246,.12);
+        0 0 0 5px rgba(124,58,237,0.10);
 }
 
-.price-input-wrap{
+.price-input-wrap {
 
-    position:relative;
+    position: relative;
 }
 
-.currency{
+.currency {
 
-    position:absolute;
+    position: absolute;
 
-    top:50%;
-    right:18px;
+    right: 18px;
+    top: 50%;
 
-    transform:translateY(-50%);
+    transform: translateY(-50%);
 
-    font-weight:800;
+    font-weight: 800;
 
-    color:#8f8fa4;
+    color: #8f8aa8;
 }
 
-/* =========================================
-   FILE PICKER
-   ========================================= */
+/* =============================================
+   FILE INPUT
+   ============================================= */
 
-.file-input-label{
+.file-input-label {
 
-    position:relative;
+    position: relative;
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
-    align-items:center;
+    align-items: center;
+    justify-content: center;
 
-    padding:20px;
+    padding: 18px;
 
-    border-radius:22px;
+    border-radius: 24px;
 
-    border:2px dashed #d9ccff;
+    border: 2px dashed #d9ccff;
 
     background:
         linear-gradient(
             to bottom,
-            rgba(255,255,255,.8),
-            rgba(255,255,255,.55)
+            rgba(255,255,255,0.78),
+            rgba(255,255,255,0.62)
         );
 
-    color:#8e82bc;
+    color: #8e84b5;
 
-    font-size:14px;
+    font-size: 14px;
 
-    font-weight:700;
+    font-weight: 800;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.file-input-label input{
+.file-input-label input {
 
-    position:absolute;
-    inset:0;
+    position: absolute;
 
-    opacity:0;
+    inset: 0;
+
+    opacity: 0;
 }
 
-/* =========================================
+/* =============================================
+   IMAGE PREVIEW
+   ============================================= */
+
+#img-preview-wrap {
+
+    position: relative;
+
+    margin-top: 14px;
+
+    overflow: hidden;
+
+    border-radius: 26px;
+}
+
+#img-preview {
+
+    width: 100%;
+
+    max-height: 280px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+#img-clear {
+
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,0.42);
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+/* =============================================
    BUTTON
-   ========================================= */
+   ============================================= */
 
-.btn-main{
+.btn-main {
 
-    width:100%;
+    width: 100%;
 
-    border:none;
+    margin-top: 22px;
 
-    padding:17px;
+    padding: 17px;
 
-    margin-top:24px;
+    border: none;
 
-    border-radius:22px;
+    border-radius: 24px;
 
     background:
         linear-gradient(
@@ -354,541 +445,513 @@ body{
             #7c3aed
         );
 
-    color:white;
+    color: white;
 
-    font-size:15px;
+    font-size: 15px;
 
-    font-weight:800;
+    font-weight: 900;
 
-    letter-spacing:.3px;
+    letter-spacing: 0.3px;
 
-    cursor:pointer;
+    cursor: pointer;
 
     box-shadow:
-        0 14px 28px rgba(124,58,237,.24);
+        0 16px 28px rgba(124,58,237,0.24);
 
-    transition:.2s;
+    transition: 0.22s ease;
 }
 
-.btn-main:active{
+.btn-main:active {
 
-    transform:scale(.985);
+    transform: scale(0.98);
 }
 
-/* =========================================
+/* =============================================
+   PRODUCT GRID
+   ============================================= */
+
+.product-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+    padding-top: 16px;
+}
+
+/* =============================================
+   CARD
+   ============================================= */
+
+.card {
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    padding-bottom: 12px;
+}
+
+.card-img-container {
+
+    margin: 8px;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    aspect-ratio: 0.82 / 1;
+
+    background: #f3efff;
+}
+
+.card-img-container img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.35s ease;
+}
+
+.card:active img {
+
+    transform: scale(1.04);
+}
+
+.btn-delete {
+
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    width: 30px;
+    height: 30px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.82);
+
+    backdrop-filter: blur(12px);
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.card-body {
+
+    padding: 6px 13px;
+}
+
+.card h3 {
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    margin-bottom: 4px;
+}
+
+.price {
+
+    color: #7c3aed;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    margin-bottom: 8px;
+}
+
+/* =============================================
+   STATUS
+   ============================================= */
+
+.status-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+
+    color: var(--text-muted);
+}
+
+.status-row input {
+
+    width: 18px;
+    height: 18px;
+
+    accent-color: var(--success);
+}
+
+/* =============================================
+   COMMENTS
+   ============================================= */
+
+.comment-section {
+
+    padding: 8px 12px 0;
+}
+
+.comment-list {
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-bottom: 8px;
+}
+
+.comment-list li {
+
+    background: rgba(255,255,255,0.75);
+
+    border-radius: 16px;
+
+    padding: 9px 11px;
+
+    font-size: 11.5px;
+
+    line-height: 1.5;
+
+    color: #5d5873;
+}
+
+.comment-input-row {
+
+    display: flex;
+
+    gap: 6px;
+}
+
+.comment-input-row button {
+
+    border: none;
+
+    border-radius: 16px;
+
+    padding: 0 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a78bfa,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+/* =============================================
    LIST HEADER
-   ========================================= */
+   ============================================= */
 
-.list-header{
+.list-header {
 
-    padding:20px;
+    margin: 14px;
 
-    margin-bottom:18px;
+    border-radius: 30px;
 
-    border-radius:32px;
+    padding: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
 
     background:
         linear-gradient(
             135deg,
             #8b5cf6,
-            #6d28d9
-        );
-
-    color:white;
-
-    box-shadow:
-        0 18px 34px rgba(124,58,237,.22);
-}
-
-.list-header p{
-
-    font-size:12px;
-
-    opacity:.78;
-
-    margin-bottom:4px;
-}
-
-#total-price{
-
-    font-size:28px;
-
-    font-weight:900;
-
-    letter-spacing:-1px;
-}
-
-/* =========================================
-   STATS
-   ========================================= */
-
-.product-stats{
-
-    display:flex;
-
-    gap:10px;
-
-    margin-top:14px;
-}
-
-.stat-box{
-
-    flex:1;
-
-    background:rgba(255,255,255,.14);
-
-    backdrop-filter:blur(10px);
-
-    border-radius:20px;
-
-    padding:12px;
-
-    text-align:center;
-}
-
-.stat-box span{
-
-    display:block;
-
-    font-size:22px;
-
-    font-weight:900;
-
-    margin-bottom:4px;
-}
-
-.stat-box small{
-
-    font-size:10px;
-
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
-    opacity:.82;
-}
-
-/* =========================================
-   PRODUCT GRID
-   ========================================= */
-
-.product-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:16px;
-}
-
-/* =========================================
-   PRODUCT CARD
-   ========================================= */
-
-.card{
-
-    overflow:hidden;
-
-    position:relative;
-
-    padding-bottom:10px;
-}
-
-.card-img-container{
-
-    margin:8px;
-
-    border-radius:24px;
-
-    overflow:hidden;
-
-    aspect-ratio:.82/1;
-
-    background:#f3f0ff;
-}
-
-.card-img-container img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    transition:
-        transform .4s ease,
-        filter .3s ease;
-}
-
-.card:active img{
-
-    transform:scale(1.04);
-}
-
-.btn-delete{
-
-    position:absolute;
-
-    top:16px;
-    right:16px;
-
-    width:30px;
-    height:30px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.8);
-
-    backdrop-filter:blur(12px);
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    z-index:10;
-}
-
-.card-body{
-
-    padding:4px 14px 6px;
-}
-
-.card h3{
-
-    font-size:14px;
-
-    font-weight:800;
-
-    margin-bottom:5px;
-
-    letter-spacing:-.2px;
-}
-
-.price{
-
-    font-size:15px;
-
-    font-weight:900;
-
-    color:#7c3aed;
-
-    margin-bottom:10px;
-}
-
-/* =========================================
-   STATUS
-   ========================================= */
-
-.status-row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    font-size:12px;
-
-    color:#8b8ca3;
-}
-
-.status-row input{
-
-    width:18px;
-    height:18px;
-
-    accent-color:#7c3aed;
-}
-
-/* =========================================
-   COMMENT
-   ========================================= */
-
-.comment-section{
-
-    padding:10px 14px 0;
-}
-
-.comment-list{
-
-    list-style:none;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
-
-    margin-bottom:10px;
-}
-
-.comment-list li{
-
-    background:#f8f7fd;
-
-    border-radius:16px;
-
-    padding:10px 12px;
-
-    font-size:12px;
-
-    line-height:1.5;
-
-    color:#5e5c72;
-}
-
-.comment-input-row{
-
-    display:flex;
-
-    gap:8px;
-}
-
-.comment-input-row button{
-
-    border:none;
-
-    width:42px;
-
-    border-radius:16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #a78bfa,
             #7c3aed
         );
 
-    color:white;
-
-    font-size:20px;
-
-    font-weight:700;
+    color: white;
 }
 
-/* =========================================
+#total-price {
+
+    font-size: 25px;
+
+    font-weight: 900;
+}
+
+/* =============================================
+   STATS
+   ============================================= */
+
+.product-stats {
+
+    display: flex;
+
+    gap: 8px;
+}
+
+.stat-box {
+
+    min-width: 72px;
+
+    padding: 9px 12px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.16);
+
+    backdrop-filter: blur(10px);
+
+    text-align: center;
+}
+
+.stat-box span {
+
+    display: block;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    color: white;
+}
+
+.stat-box small {
+
+    font-size: 10px;
+
+    color: rgba(255,255,255,0.82);
+}
+
+/* =============================================
    BANK BOX
-   ========================================= */
+   ============================================= */
 
-.bank-box{
+.bank-box {
 
-    margin-top:20px;
+    margin-top: 18px;
 
-    padding:18px;
+    border-radius: 32px;
 
-    text-align:center;
+    padding: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 14px;
 }
 
-.bank-avatar{
+.bank-avatar {
 
-    width:100%;
+    width: 100%;
 
-    max-width:180px;
+    max-width: 210px;
 
-    aspect-ratio:1/1;
+    aspect-ratio: 1 / 1;
 
-    object-fit:cover;
+    object-fit: cover;
 
-    border-radius:28px;
+    border-radius: 30px;
 
-    margin:auto;
-
-    display:block;
-
-    cursor:pointer;
+    border: 4px solid rgba(255,255,255,0.8);
 
     box-shadow:
-        0 16px 30px rgba(0,0,0,.08);
+        0 14px 30px rgba(0,0,0,0.10);
 
-    border:5px solid rgba(255,255,255,.9);
+    cursor: pointer;
 
-    transition:.3s;
+    transition: 0.25s ease;
 }
 
-.bank-avatar:active{
+.bank-avatar:active {
 
-    transform:scale(.97);
+    transform: scale(0.97);
 }
 
-.bank-owner{
+/* =============================================
+   MODAL
+   ============================================= */
 
-    margin-top:14px;
+.bank-modal {
 
-    font-size:11px;
+    position: fixed;
 
-    font-weight:700;
+    inset: 0;
 
-    letter-spacing:2px;
+    background: rgba(12,12,20,0.88);
 
-    text-transform:uppercase;
+    backdrop-filter: blur(16px);
 
-    color:#9795aa;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 22px;
+
+    z-index: 9999;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.3s ease;
 }
 
-/* =========================================
-   IMAGE MODAL
-   ========================================= */
+.bank-modal.show {
 
-.bank-modal{
+    opacity: 1;
 
-    position:fixed;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-
-    background:rgba(10,10,20,.88);
-
-    backdrop-filter:blur(16px);
-
-    z-index:9999;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s;
+    visibility: visible;
 }
 
-.bank-modal.show{
+.bank-modal img {
 
-    opacity:1;
+    width: 100%;
 
-    visibility:visible;
+    max-width: 390px;
+
+    max-height: 82vh;
+
+    object-fit: contain;
+
+    border-radius: 30px;
+
+    background: white;
+
+    padding: 8px;
+
+    transform: scale(0.92);
+
+    transition: 0.3s ease;
 }
 
-.bank-modal img{
+.bank-modal.show img {
 
-    width:100%;
-
-    max-width:380px;
-
-    max-height:82vh;
-
-    object-fit:contain;
-
-    border-radius:30px;
-
-    background:white;
-
-    padding:10px;
-
-    box-shadow:
-        0 30px 60px rgba(0,0,0,.45);
-
-    transform:scale(.92);
-
-    transition:.3s;
+    transform: scale(1);
 }
 
-.bank-modal.show img{
+.bank-modal-close {
 
-    transform:scale(1);
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(10px);
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
 }
 
-.bank-modal-close{
-
-    position:absolute;
-
-    top:18px;
-    right:18px;
-
-    width:46px;
-    height:46px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.14);
-
-    backdrop-filter:blur(10px);
-
-    color:white;
-
-    font-size:18px;
-
-    cursor:pointer;
-}
-
-/* =========================================
+/* =============================================
    TOAST
-   ========================================= */
+   ============================================= */
 
-.toast{
+.toast {
 
-    position:fixed;
+    position: fixed;
 
-    left:50%;
-    bottom:28px;
+    left: 50%;
+    bottom: 26px;
 
-    transform:
-        translateX(-50%)
-        translateY(90px);
+    transform: translateX(-50%) translateY(80px);
 
-    background:rgba(20,20,28,.78);
+    background: rgba(18,18,28,0.82);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter: blur(18px);
 
-    color:white;
+    color: white;
 
-    padding:14px 22px;
+    padding: 14px 22px;
 
-    border-radius:999px;
+    border-radius: 999px;
 
-    font-size:13px;
+    font-size: 13px;
 
-    font-weight:700;
+    font-weight: 800;
 
-    opacity:0;
+    opacity: 0;
 
-    transition:.35s;
+    z-index: 999;
 
-    z-index:9999;
+    transition: 0.35s ease;
 }
 
-.toast.show{
+.toast.show {
 
-    opacity:1;
+    transform: translateX(-50%) translateY(0);
 
-    transform:
-        translateX(-50%)
-        translateY(0);
+    opacity: 1;
 }
 
-/* =========================================
-   MOBILE PERFECT
-   ========================================= */
+/* =============================================
+   MOBILE
+   ============================================= */
 
-@media(max-width:480px){
+@media (max-width: 480px) {
 
-    .container{
-        padding:12px;
+    .container {
+
+        padding: 0 12px;
     }
 
-    .header-title{
-        font-size:30px;
+    .header-title {
+
+        font-size: 28px;
     }
 
-    .product-grid{
-        gap:12px;
+    .product-grid {
+
+        gap: 12px;
     }
 
-    .card h3{
-        font-size:13px;
+    .bank-avatar {
+
+        max-width: 170px;
     }
 
-    .price{
-        font-size:14px;
+    .card h3 {
+
+        font-size: 12px;
     }
 
-    .bank-avatar{
-        max-width:160px;
+    .price {
+
+        font-size: 13px;
     }
 }

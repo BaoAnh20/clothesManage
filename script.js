@@ -153,7 +153,7 @@ function renderItems(itemsObj) {
                 <label class="status-row">
                     <input type="checkbox" ${item.isBought ? 'checked' : ''}
                            onchange="toggleBought('${key}', ${item.isBought})">
-                    <span>${item.isBought ? 'Mua ✓' : 'Đang chọn'}</span>
+                    <span>${item.isBought ? 'Mua ✓' : 'Xem xét mua'}</span>
                 </label>
             </div>
             <div class="comment-section">
