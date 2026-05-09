@@ -126,7 +126,7 @@ function renderItems(itemsObj) {
 
     Object.keys(itemsObj).forEach(key => {
         const item = itemsObj[key];
-        if (!item.isBought) total += item.price;
+        if (item.isBought) total += item.price;
 
         const comments = item.comments || [];
         const commentsHTML = comments.length > 0
