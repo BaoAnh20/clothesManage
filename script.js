@@ -130,7 +130,14 @@ function renderItems(itemsObj) {
 
         const comments = item.comments || [];
         const commentsHTML = comments.length > 0
-            ? comments.map(c => `<li>💬 ${c}</li>`).join('')
+            ? comments.map((c, i) => `
+                <li class="comment-item" id="citem-${key}-${i}">
+                    <span class="comment-text">💬 ${c}</span>
+                    <div class="comment-actions">
+                        <button class="btn-comment-action btn-edit-c" onclick="editComment('${key}', ${i})" title="Sửa">✏️</button>
+                        <button class="btn-comment-action btn-del-c" onclick="deleteComment('${key}', ${i})" title="Xóa">🗑</button>
+                    </div>
+                </li>`).join('')
             : '<li class="empty">Chưa có ghi chú...</li>';
 
         const card = document.createElement('div');
@@ -188,6 +195,65 @@ window.addComment = (key) => {
         db.ref('clothes/' + key).update({ comments: currentComms });
         input.value = '';
     });
+};
+
+window.deleteComment = (key, index) => {
+    db.ref('clothes/' + key + '/comments').once('value', s => {
+        const comms = s.val() || [];
+        comms.splice(index, 1);
+        db.ref('clothes/' + key).update({ comments: comms });
+    });
+};
+
+window.editComment = (key, index) => {
+    const li = document.getElementById(`citem-${key}-${index}`);
+    if (!li) return;
+
+    const textSpan = li.querySelector('.comment-text');
+    const actions = li.querySelector('.comment-actions');
+    const oldText = textSpan.textContent.replace('💬 ', '').trim();
+
+    // Thay bằng input inline
+    textSpan.style.display = 'none';
+    actions.style.display = 'none';
+
+    const editWrap = document.createElement('div');
+    editWrap.className = 'comment-edit-wrap';
+    editWrap.innerHTML = `
+        <input class="comment-edit-input" type="text" value="${oldText}" />
+        <button class="btn-comment-save" onclick="saveComment('${key}', ${index}, this)">✅</button>
+        <button class="btn-comment-cancel" onclick="cancelEdit('${key}', ${index}, this, '${oldText}')">✕</button>
+    `;
+    li.appendChild(editWrap);
+
+    const inp = editWrap.querySelector('input');
+    inp.focus();
+    inp.select();
+    inp.addEventListener('keydown', e => {
+        if (e.key === 'Enter') saveComment(key, index, editWrap.querySelector('.btn-comment-save'));
+        if (e.key === 'Escape') cancelEdit(key, index, editWrap.querySelector('.btn-comment-cancel'), oldText);
+    });
+};
+
+window.saveComment = (key, index, btn) => {
+    const li = btn.closest('li');
+    const newVal = li.querySelector('.comment-edit-input').value.trim();
+    if (!newVal) return;
+
+    db.ref('clothes/' + key + '/comments').once('value', s => {
+        const comms = s.val() || [];
+        comms[index] = newVal;
+        db.ref('clothes/' + key).update({ comments: comms });
+        // Firebase listener sẽ tự re-render
+    });
+};
+
+window.cancelEdit = (key, index, btn, oldText) => {
+    const li = btn.closest('li');
+    li.querySelector('.comment-text').style.display = '';
+    li.querySelector('.comment-actions').style.display = '';
+    const wrap = li.querySelector('.comment-edit-wrap');
+    if (wrap) wrap.remove();
 };
 
 // 8. Thông báo hệ thống

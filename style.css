@@ -432,6 +432,77 @@ body {
     font-size: 11px;
 }
 
+/* Mỗi dòng comment có nút sửa/xóa */
+.comment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.comment-text {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.btn-comment-action {
+    background: none;
+    border: none;
+    padding: 2px 4px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+    opacity: 0.55;
+    transition: opacity 0.15s;
+    line-height: 1;
+}
+
+.btn-comment-action:active {
+    opacity: 1;
+}
+
+/* Input sửa comment inline */
+.comment-edit-wrap {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.comment-edit-input {
+    flex: 1;
+    min-width: 0;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1.5px solid var(--primary);
+    outline: none;
+    color: var(--text-main);
+    background: #fff;
+}
+
+.btn-comment-save,
+.btn-comment-cancel {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
 .comment-input-row {
     display: flex;
     gap: 5px;
