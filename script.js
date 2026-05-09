@@ -174,3 +174,36 @@ indow.onload = () => {
         }
     });
 };
+
+// Thêm hàm này vào script.js
+function sendNotification(title, message) {
+    if (Notification.permission === "granted") {
+        new Notification(title, {
+            body: message,
+            icon: 'https://cdn-icons-png.flaticon.com/512/3502/3502214.png' // Link icon tùy chọn
+        });
+    }
+}
+
+// Cập nhật trong window.onload
+window.onload = () => {
+    // Xin quyền thông báo ngay khi vào trang
+    if ("Notification" in window) {
+        Notification.requestPermission();
+    }
+
+    // Biến cờ để không báo những món đồ cũ đã có sẵn từ trước khi mở trang
+    let initialDataLoaded = false;
+    db.ref('clothes').once('value', () => {
+        initialDataLoaded = true;
+    });
+
+    // Lắng nghe khi có món đồ MỚI được thêm vào
+    db.ref('clothes').on('child_added', (snapshot) => {
+        if (initialDataLoaded) {
+            const newItem = snapshot.val();
+            sendNotification("Có đồ mới! ✨", `Món đồ "${newItem.name}" vừa được thêm vào tủ.`);
+        }
+    });
+    
+};
