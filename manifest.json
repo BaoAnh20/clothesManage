@@ -7,7 +7,7 @@
   "theme_color": "#4a4ae1", 
   "icons": [
     {
-      "src": "black-cat.png",
+      "src": "https://www.flaticon.com/free-icons/black-cat",
       "sizes": "512x512",
       "type": "image/png"
     }
