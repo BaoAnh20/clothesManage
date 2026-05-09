@@ -26,8 +26,7 @@ db.ref('clothes').on('value', (snapshot) => {
     const data = snapshot.val();
     renderItems(data);
 });
-// Gán sự kiện để khi bấm nút thì hàm addItem mới chạy
-btnAdd.onclick = addItem;
+
 // 5. Hàm thêm món đồ mới
 function addItem() {
     const name = document.getElementById('item-name').value;
@@ -159,3 +158,19 @@ window.onload = () => {
         }
     });
 };  
+
+indow.onload = () => {
+    // 1. Chỉ gán sự kiện nếu đang ở trang có nút Add (Trang quản lý)
+    if (btnAdd) {
+        btnAdd.onclick = addItem;
+    }
+
+    // 2. Lắng nghe database
+    db.ref('clothes').on('value', (snapshot) => {
+        const data = snapshot.val();
+        // 3. Chỉ render nếu trang đó có phần tử hiển thị danh sách (Trang products)
+        if (list) {
+            renderItems(data);
+        }
+    });
+};
