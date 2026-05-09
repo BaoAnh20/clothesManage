@@ -415,12 +415,12 @@ body {
 .comment-list::-webkit-scrollbar { display: none; }
 
 .comment-list li {
-    font-size: 11.5px;
+    font-size: 12px;
     color: #475569;
     background: #f8fafc;
-    border-radius: 6px;
-    padding: 4px 8px;
-    line-height: 1.4;
+    border-radius: 8px;
+    padding: 8px 10px;
+    line-height: 1.5;
     border: 1px solid #f1f5f9;
 }
 
@@ -435,17 +435,25 @@ body {
 /* Mỗi dòng comment có nút sửa/xóa */
 .comment-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 4px;
+    gap: 6px;
 }
 
 .comment-text {
     flex: 1;
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+
+    /* Cho phép xuống dòng */
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+    /* Bỏ dấu ... */
+    overflow: visible;
+    text-overflow: unset;
+
+    line-height: 1.45;
 }
 
 .comment-actions {
